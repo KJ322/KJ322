@@ -25,43 +25,48 @@ public class diceRoller
 
     public static void getDice()
     {
-        int total = 0;
+        int total = 0, modifier = 0;
         Scanner in = new Scanner(System.in);
 
         //gather necessary information from player
         System.out.println("What die do you want to roll? (ex. d20) ");
         String sidesOfDice = in.nextLine();
+        System.out.println();
 
         System.out.println("How many dice do you want to roll? ");
         int numOfDice = in.nextInt();
-
-        System.out.println("What is your modifier? (ex. 3, -1) ");
-        int modifier = in.nextInt();
         System.out.println();
+
+        if (sidesOfDice.equals("d20"))
+        {
+            System.out.println("What is your modifier? (ex. 3, -1) ");
+            modifier = in.nextInt();
+            System.out.println();
+        }
 
         //determines which method to call based on player input
         switch (sidesOfDice)
         {
             case "d100":
-                d100(numOfDice, modifier, total);
+                d100(numOfDice, total);
                 break;
             case "d20":
                 d20(numOfDice, modifier, total);
                 break;
             case "d12":
-                d12(numOfDice, modifier, total);
+                d12(numOfDice, total);
                 break;
             case "d10":
-                d10(numOfDice, modifier, total);
+                d10(numOfDice, total);
                 break;
             case "d8":
-                d8(numOfDice, modifier, total);
+                d8(numOfDice, total);
                 break;
             case "d6":
-                d6(numOfDice, modifier, total);
+                d6(numOfDice, total);
                 break;
             case "d4":
-                d4(numOfDice, modifier, total);
+                d4(numOfDice, total);
                 break;
             default:
                 System.out.println("Invalid input. Please try again.");
@@ -69,7 +74,7 @@ public class diceRoller
         }
     }
 
-    public static void d100 (int numOfDice, int modifier, int total)
+    public static void d100 (int numOfDice, int total)
     {
         final int SIDES = 100;
         int roll, i, rollTotal = 0;
@@ -102,7 +107,7 @@ public class diceRoller
         rollAgain();
     }
 
-    public static void d12 (int numOfDice, int modifier, int total)
+    public static void d12 (int numOfDice, int total)
     {
         final int SIDES = 12;
         int roll, i, rollTotal = 0;
@@ -118,7 +123,7 @@ public class diceRoller
         rollAgain();
     }
 
-    public static void d10 (int numOfDice, int modifier, int total)
+    public static void d10 (int numOfDice, int total)
     {
         final int SIDES = 10;
         int roll, i, rollTotal = 0;
@@ -134,7 +139,7 @@ public class diceRoller
         rollAgain();
     }
 
-    public static void d8 (int numOfDice, int modifier, int total)
+    public static void d8 (int numOfDice, int total)
     {
         final int SIDES = 8;
         int roll, i, rollTotal = 0;
@@ -150,7 +155,7 @@ public class diceRoller
         rollAgain();
     }
 
-    public static void d6 (int numOfDice, int modifier, int total)
+    public static void d6 (int numOfDice, int total)
     {
         final int SIDES = 6;
         int roll, i, rollTotal = 0;
@@ -166,7 +171,7 @@ public class diceRoller
         rollAgain();
     }
 
-    public static void d4 (int numOfDice, int modifier, int total)
+    public static void d4 (int numOfDice, int total)
     {
         final int SIDES = 4;
         int roll, i, rollTotal = 0;
