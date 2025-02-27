@@ -7,35 +7,38 @@ public class skillMod
     public static void main(String[] args)
     {
         //declaring variables
-        Scanner in = new Scanner(System.in);
-        int abilityScore;
+        int abilityScore = 0;
 
         //calling methods
         intro();
-        getScore();
+        getScore(abilityScore);
+        modCalculation(abilityScore);
     } 
 
     public static void intro()
     {
         System.out.println("Welcome, player!");
         System.out.println("This program will help you determine your ability modifier.");
-        System.out.println("Just enter your ability score and I'll do the rest!")
+        System.out.println("Just enter your ability score and I'll do the rest!");
     }
 
-    public static void getScore(Scanner in, int abilityScore)
+    public static void getScore(int abilityScore)
     {
+        Scanner in = new Scanner(System.in);
+
         System.out.println("What is your ability score? ");
         abilityScore = in.nextInt();
 
         if (abilityScore < 1 || abilityScore > 30)
         {
-            System.out.println("That's an invalid ability score! Try again.")
-            getScore(in, abilityScore);
+            System.out.println("That's an invalid ability score! Try again.");
+            getScore(abilityScore);
         }
     }
 
     public static void modCalculation (int abilityScore)
     {
+        System.out.println(abilityScore);
         //switch case written with Claude
         // Using switch with ranges (Java 14+)
         /* Switch case only works in Java 14 onward
@@ -79,23 +82,23 @@ public class skillMod
         {
             System.out.println("Your ability modifer is -5");
         } 
-        else if (abilityScore >= 2 && abilityScore <= 3) 
+        else if (abilityScore == 2 || abilityScore == 3) 
         {
             System.out.println("Your ability modifer is -4");
         } 
-        else if (abilityScore >= 4 && abilityScore <= 5) 
+        else if (abilityScore == 4 || abilityScore == 5) 
         {
             System.out.println("Your ability modifer is -3");
         } 
-        else if (abilityScore >= 6 && abilityScore <= 7) 
+        else if (abilityScore == 6 || abilityScore == 7) 
         {
             System.out.println("Your ability modifer is -2");
         } 
-        else if (abilityScore >= 8 && abilityScore <= 9) 
+        else if (abilityScore == 8 || abilityScore == 9) 
         {
             System.out.println("Your ability modifer is -1");
         } 
-        else if (abilityScore >= 10 && abilityScore <= 11) 
+        else if (abilityScore == 10 || abilityScore == 11) 
         {
             System.out.println("Your ability modifer is 0");
         } 
