@@ -30,7 +30,7 @@ class CharacterSheet implements Serializable
     }
 }
 
-public class Test 
+public class characterSheet
 {
     public static void main(String[] args) throws IOException, ClassNotFoundException 
     {

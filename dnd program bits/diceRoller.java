@@ -72,6 +72,8 @@ public class diceRoller
                 System.out.println("Invalid input. Please try again.");
                 getDice();
         }
+
+        in.close();
     }
 
     public static void d100 (int numOfDice, int total)
@@ -208,5 +210,6 @@ public class diceRoller
             System.out.println("Invalid input. Please try again.");
             rollAgain();
         }
+        in.close();
     }
 }

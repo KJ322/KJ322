@@ -36,7 +36,9 @@ public class skillMod
             getScore();
         }
 
+        in.close();
         return abilityScore;
+        
     }
 
     public static void modCalculation (int abilityScore)
@@ -191,5 +193,6 @@ public class skillMod
             System.out.println("Invalid input. Please try again.");
             goAgain();
         }
+        in.close();
     }
 }

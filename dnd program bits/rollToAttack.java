@@ -68,6 +68,8 @@ public class rollToAttack
         {
             System.out.println("Better luck next time!");
         }
+
+        in.close();
     }
 
     public static void getDice(String sidesOfDice, int numOfDice)
@@ -197,5 +199,7 @@ public class rollToAttack
             System.out.println("Invalid input. Please try again.");
             rollAgain();
         }
+
+        in.close();
     }
 }
