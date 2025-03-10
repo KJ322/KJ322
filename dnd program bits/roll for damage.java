@@ -45,9 +45,8 @@ public class diceRoller
             rollTotal += roll;
         }
 
-        total = rollTotal + modifier;
+        int total = rollTotal + modifier + profBonus;
         System.out.println ("You rolled " + total);
-        rollAgain();
     }
 
     public static void rollAgain()
