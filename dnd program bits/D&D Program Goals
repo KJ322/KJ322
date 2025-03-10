@@ -1,5 +1,30 @@
-Dice Roller: done
-Skill Modifier Calculator: done
-Saving character sheet: done
-check stats: not started
-inventory (adding and removing manually): not started
+Can i use user input to remove items from a list? Yes
+Anonymous inner classes?
+^are those reasonable to use in my overall project?
+Use JOptionPane for the buttons? Look into this more
+
+
+modes: Play, Combat, and Char Creation
+
+Play:
+Rolling (done)
+check/add/remove items from inventory
+Check stats/mods/prof bonus
+Track inspiration/xp/hp
+Check char sheet (not complete)
+
+Combat:
+Rolling damage
+Track hp/spell slots
+
+Char creation:
+Rolling stats
+Skill mods (done)
+Prof bonus
+hp
+Basically just making a character sheet
+Add starter items to inventory
+How to format?
+
+
+Constant buttons: exit, check stats (pulls up character sheet), roll (calls roll function), inventory (allows for adding and removing items), 
