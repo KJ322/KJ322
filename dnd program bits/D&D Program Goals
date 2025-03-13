@@ -1,6 +1,5 @@
 Can i use user input to remove items from a list? Yes
-Anonymous inner classes?
-^are those reasonable to use in my overall project?
+lambda functions? linking files?
 Use JOptionPane for the buttons? Look into this more
 
 
@@ -18,13 +17,15 @@ Rolling damage (done)
 Track hp/spell slots
 
 Char creation:
-Rolling stats
+Rolling stats (done)
 Skill mods (done)
 Prof bonus
 hp
 Basically just making a character sheet
 Add starter items to inventory
 How to format?
+
+framework for final program
 
 
 Constant buttons: exit, check stats (pulls up character sheet), roll (calls roll function), inventory (allows for adding and removing items), 
