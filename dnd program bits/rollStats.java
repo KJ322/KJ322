@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Collections;
+
 public class rollStats 
 {
     /*
@@ -34,8 +37,12 @@ public class rollStats
             int roll3 = (int)(Math.random() * 6) + 1;
             int roll4 = (int)(Math.random() * 6) + 1;
 
-            int rollTotal = (roll1 + roll2 + roll3 + roll4) - //TODO;
-            
+            int rollTotal = (roll1 + roll2 + roll3 + roll4); // - //TODO subtract lowest die;
+            int[] rolls = {roll1, roll2, roll3, roll4};
+            //int lowest_roll = Collections.min(Arrays.asList(rolls));
+            int lowest_roll = 0;
+            rollTotal -= lowest_roll;
+
             System.out.println(rollTotal);
         }
     }
