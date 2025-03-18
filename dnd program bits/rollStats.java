@@ -16,9 +16,25 @@ public class rollStats
             int roll3 = (int)(Math.random() * 6) + 1;
             int roll4 = (int)(Math.random() * 6) + 1;
 
-            int rollTotal = (roll1 + roll2 + roll3 + roll4) - ;
-            
-            System.out.println(rollTotal);
+            int rolls[] = {roll1, roll2, roll3, roll4};
+            //int lowest_roll = Collections.min(Arrays.asList(rolls));
+            //int lowestRoll = 0;
+            //rollTotal -= lowestRoll;
+            int lowestRoll = 1;
+
+            for (int j = 0; j < rolls.length; j++)
+            {
+                if (lowestRoll > rolls[j])
+                {
+                    lowestRoll = rolls[j];
+                }
+            }
+
+            System.out.println(lowestRoll);
+
+            int rollTotal = roll1 + roll2 + roll3 + roll4 - lowestRoll;
+
+            System.out.println(roll1 + " + " + roll2 + " + " + roll3 + " + " + roll4 + " - " + lowestRoll + " = " + rollTotal);
         }
     }
 
