@@ -20,7 +20,7 @@ public class rollStats
             //int lowest_roll = Collections.min(Arrays.asList(rolls));
             //int lowestRoll = 0;
             //rollTotal -= lowestRoll;
-            int lowestRoll = 1;
+            int lowestRoll = 6;
 
             for (int j = 0; j < rolls.length; j++)
             {
