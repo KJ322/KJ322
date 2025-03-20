@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.Collections;
+//import java.util.Arrays;
+//import java.util.Collections;
 
 public class rollStats 
 {
@@ -10,7 +10,12 @@ public class rollStats
     public static void main(String[] args) 
     {
         intro();
-        rolls();
+
+        for (int i = 0; i < 6; i++)
+        {
+            int statRolls[] = rolls();
+        }
+
     }
 
     public static void intro()
@@ -20,10 +25,8 @@ public class rollStats
         System.out.println("Let's get started!");
     }
 
-    public static void rolls()
+    public static int[] rolls()
     {
-        for (int i = 0; i < 6; i++)
-        {
             int roll1 = (int)(Math.random() * 6) + 1;
             int roll2 = (int)(Math.random() * 6) + 1;
             int roll3 = (int)(Math.random() * 6) + 1;
@@ -43,7 +46,6 @@ public class rollStats
             int rollTotal = roll1 + roll2 + roll3 + roll4 - lowestRoll;
 
             System.out.println(roll1 + " + " + roll2 + " + " + roll3 + " + " + roll4 + " - " + lowestRoll + " = " + rollTotal);
-        }
     }
 
     public static void assignStats()
