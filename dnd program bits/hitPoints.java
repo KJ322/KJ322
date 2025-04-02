@@ -41,11 +41,40 @@ public class hitPoints
     {
         //TODO
         //help menu with hit dice for each base game class
+        System.out.println("Barbarian Hit Die: d12");
+        System.out.println("Bard Hit Die: d8");
+        System.out.println("Cleric Hit Die: d8");
+        System.out.println("Druid Hit Die: d8");
+        System.out.println("Fighter Hit Die: d10");
+        System.out.println("Monk Hit Die: d8");
+        System.out.println("Paladin Hit Die: d10");
+        System.out.println("Ranger Hit Die: d10");
+        System.out.println("Rogue Hit Die: d8");
+        System.out.println("Sorcerer Hit Die: d6");
+        System.out.println("Warlock Hit Die: d8");
+        System.out.println("Wizard Hit Die: d6");
+        System.out.println("Artificer Hit Die: d8");
     }
 
     public static void calcHitPoints()
     {
         //TODO
         //input for which die to use (allows for easy integration of homebrew classes)
+        //math is max roll + con mod
+        System.out.println("What die do you want to roll? (ex. d20) ");
+        String sidesOfDice = in.nextLine();
+        System.out.println();
+
+
+
+    }
+
+    public static void d12 (int total)
+    {
+        final int SIDES = 12;
+        
+        
+
+        System.out.println ("Your HP is " + rollTotal);
     }
 }
