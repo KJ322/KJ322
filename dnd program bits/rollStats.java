@@ -33,7 +33,7 @@ public class rollStats
             int roll4 = (int)(Math.random() * 6) + 1;
 
             int rolls[] = {roll1, roll2, roll3, roll4};
-            int lowestRoll = 6;
+            int lowestRoll = 7;
 
             for (int j = 0; j < rolls.length; j++)
             {

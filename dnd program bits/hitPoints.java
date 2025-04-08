@@ -61,15 +61,32 @@ public class hitPoints
         //TODO
         //input for which die to use (allows for easy integration of homebrew classes)
         //math is max roll + con mod
-        System.out.println("What die do you want to roll? (ex. d20) ");
-        String sidesOfDice = in.nextLine();
+        System.out.println("What die do you want to roll? (ex. 20) ");
+        int sidesOfDice = in.nextInt();
         System.out.println();
 
-
+        switch (sidesOfDice)
+        {
+            case "d12":
+                d12();
+                break;
+            case "d10":
+                d10();
+                break;
+            case "d8":
+                d8();
+                break;
+            case "d6":
+                d6();
+                break;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                getDice();
+        }
 
     }
 
-    public static void d12 (int total)
+    public static void d12 ()
     {
         final int SIDES = 12;
         
