@@ -1,7 +1,10 @@
-public class dndToolbag
+import java.util.Scanner;
+
+public class dndToolbag 
 {
     //just a rough framework for now
     //will probably figure out how to link files for this one
+    
 
 
     public static void main(String[] args)
@@ -28,7 +31,7 @@ public class dndToolbag
         }
         else
         {
-            System.out.println("Invalid input.")
+            System.out.println("Invalid input.");
             System.out.println("1) Play\n2) Character Creation");
             userMode = k.nextInt();
         }
@@ -44,12 +47,12 @@ public class dndToolbag
         final int COMBAT = 5;
 
 
-        System.out.print("You are in play mode.\nYou can: ");
+        System.out.print("You are in play mode.\nYou can:\n ");
         System.out.println("1. Roll");
         System.out.println("2. Keep track of inventory");
         System.out.println("3. Check your character sheet");
         System.out.println("4. Track inspiration, hp, and xp");
-        System.out.println("5. Enter combat")
+        System.out.println("5. Enter combat");
         System.out.print("Chose an option: ");
         int choice = k.nextInt();
 
@@ -57,7 +60,7 @@ public class dndToolbag
         if (choice == ROLL)
         {
             //TODO
-            System.out.println("diceRoller.java");
+            diceRoller.main(null);
         }
         else if (choice == INVENTORY)
         {
@@ -81,7 +84,7 @@ public class dndToolbag
         }
         else
         {
-            System.out.println("Invalid input.")
+            System.out.println("Invalid input.");
             playMode(k);
         }
     }
@@ -126,11 +129,8 @@ public class dndToolbag
         }
         else
         {
-            System.out.println("Invalid input.")
+            System.out.println("Invalid input.");
             charCreation(k);
         }
     }
 }
-
-
-
