@@ -17,7 +17,7 @@ Rolling damage (done)
 Track hp/spell slots
 
 Char creation:
-Rolling stats (partially done)
+Rolling stats (done)
 option to manually enter stats
 Skill mods (done)
 Prof bonus
@@ -29,6 +29,7 @@ add section for notes like feats/languages/proficiencies
 How to format?
 
 framework for final program
+needs to be able to handle leveling up (so adding a point to a chosen stat and whatnot)
 
 
 Constant buttons: exit, check stats (pulls up character sheet), roll (calls roll function), inventory (allows for adding and removing items), 
