@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class dndToolbag 
 {
@@ -14,7 +16,7 @@ public class dndToolbag
         final int CREATE = 2;
 
 
-        System.out.println("Welcome to the D&D Toolbag!\n\nAre you in Play mode or Creation mode?");
+        System.out.println("Welcome to the D&D Toolbag!\n\nDo you want to play or create a character?");
         System.out.println("1) Play\n2) Character Creation");
         int userMode = k.nextInt();
 
@@ -98,7 +100,7 @@ public class dndToolbag
         final int NOTES = 4;
 
 
-        System.out.print("You are in character creation mode.\nYou can: ");
+        System.out.print("You are in character creation mode.\nYou can:\n");
         System.out.println("1. Roll stats");
         System.out.println("2. Calculate HP");
         System.out.println("3. Start your inventory");
@@ -106,31 +108,32 @@ public class dndToolbag
         System.out.print("Chose an option: ");
         int choice = k.nextInt();
 
-
-        if (choice == ROLL_STATS)
-        {
-            //TODO
-            System.out.println("rollStats.java");
-        }
-        else if (choice == CALC_HP)
-        {
-            //TODO
-            System.out.print("Call hitPoints.java");
-        }
-        else if (choice == INVENTORY)
-        {
-            //TODO
-            System.out.print("Call inventory java file");
-        }
-        else if (choice == NOTES)
-        {
-            //TODO
-            System.out.print("Call notes java file");
-        }
-        else
-        {
-            System.out.println("Invalid input.");
-            charCreation(k);
+        try (FileWriter writer = new FileWriter("charCreation.txt", true)) {
+            writer.write("User chose: " + choice + "\n");
+    
+            switch (choice) {
+                case ROLL_STATS:
+                    rollStats.main(null); // Call the main method of rollStats.java
+                    break;
+                case CALC_HP:
+                    hitPoints.main(null); // Call the main method of hitPoints.java
+                    break;
+                case INVENTORY:
+                    System.out.println("Call inventory java file");
+                    //inventory.main(null); // Call the main method of inventory.java
+                    break;
+                case NOTES:
+                    System.out.println("Call notes java file");
+                    //notes.main(null); // Call the main method of notes.java
+                    break;
+                default:
+                    System.out.println("Invalid input.");
+                    charCreation(k); // Restart the process for invalid input
+                    break;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
         }
     }
 }
