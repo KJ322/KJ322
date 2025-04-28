@@ -29,15 +29,16 @@ public class diceRoller
         Scanner in = new Scanner(System.in);
 
         //gather necessary information from player
-        System.out.println("What die do you want to roll? (ex. d20) ");
-        String sidesOfDice = in.nextLine();
+        System.out.println("What die do you want to roll? (ex. d20)");
+        System.out.print("d");
+        int sidesOfDice = in.nextInt();
         System.out.println();
 
         System.out.println("How many dice do you want to roll? ");
         int numOfDice = in.nextInt();
         System.out.println();
 
-        if (sidesOfDice.equals("d20"))
+        if (sidesOfDice == 20)
         {
             System.out.println("What is your modifier? (ex. 3, -1) ");
             modifier = in.nextInt();
@@ -47,25 +48,25 @@ public class diceRoller
         //determines which method to call based on player input
         switch (sidesOfDice)
         {
-            case "d100":
+            case 100:
                 d100(numOfDice, total);
                 break;
-            case "d20":
+            case 20:
                 d20(numOfDice, modifier, total);
                 break;
-            case "d12":
+            case 12:
                 d12(numOfDice, total);
                 break;
-            case "d10":
+            case 10:
                 d10(numOfDice, total);
                 break;
-            case "d8":
+            case 8:
                 d8(numOfDice, total);
                 break;
-            case "d6":
+            case 6:
                 d6(numOfDice, total);
                 break;
-            case "d4":
+            case 4:
                 d4(numOfDice, total);
                 break;
             default:
