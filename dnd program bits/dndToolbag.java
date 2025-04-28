@@ -17,7 +17,8 @@ public class dndToolbag
 
 
         System.out.println("Welcome to the D&D Toolbag!\n\nDo you want to play or create a character?");
-        System.out.println("1) Play\n2) Character Creation");
+        System.out.println("1. Play\n2. Character Creation");
+        System.out.print("Choose: ");
         int userMode = k.nextInt();
 
 
@@ -34,7 +35,7 @@ public class dndToolbag
         else
         {
             System.out.println("Invalid input.");
-            System.out.println("1) Play\n2) Character Creation");
+            System.out.println("1. Play\n2. Character Creation");
             userMode = k.nextInt();
         }
     }
@@ -49,7 +50,7 @@ public class dndToolbag
         final int COMBAT = 5;
 
 
-        System.out.print("You are in play mode.\nYou can:\n ");
+        System.out.print("You are in play mode.\nYou can:\n");
         System.out.println("1. Roll");
         System.out.println("2. Keep track of inventory");
         System.out.println("3. Check your character sheet");
@@ -61,7 +62,6 @@ public class dndToolbag
 
         if (choice == ROLL)
         {
-            //TODO
             diceRoller.main(null);
         }
         else if (choice == INVENTORY)
