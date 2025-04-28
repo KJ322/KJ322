@@ -114,10 +114,10 @@ public class dndToolbag
             switch (choice) {
                 case ROLL_STATS:
                     rollStats.main(null); // Call the main method of rollStats.java
-                    break;
+                    charCreation(k);
                 case CALC_HP:
                     hitPoints.main(null); // Call the main method of hitPoints.java
-                    break;
+                    charCreation(k);
                 case INVENTORY:
                     System.out.println("Call inventory java file");
                     //inventory.main(null); // Call the main method of inventory.java

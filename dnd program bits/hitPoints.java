@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class hitPoints 
@@ -5,7 +6,8 @@ public class hitPoints
 
     public static void main(String[] args) 
     {
-        
+        intro();
+
     }
 
     public static void intro()
@@ -17,7 +19,7 @@ public class hitPoints
         //introduce program and get user input
         System.out.print("Let's calculate your hit points!\n");
         System.out.print("Press 1 to look at a list of hit dice for base game classes\n");
-        System.out.print("Press 2 to calculate your hit points\n")
+        System.out.print("Press 2 to calculate your hit points\n");
         System.out.print("Enter 1 or 2: ");
         int userInput = in.nextInt();
 
@@ -25,6 +27,7 @@ public class hitPoints
         if (userInput == CLASS_LIST)
         {
             classList();
+            calcHitPoints();
         }
         else if (userInput ==  CALC)
         {
@@ -35,11 +38,11 @@ public class hitPoints
             System.out.print("That is not a valid input! Try again!");
 
         }
+        in.close();
     }
 
     public static void classList()
     {
-        //TODO
         //help menu with hit dice for each base game class
         System.out.println("Barbarian Hit Die: d12");
         System.out.println("Bard Hit Die: d8");
@@ -58,40 +61,65 @@ public class hitPoints
 
     public static void calcHitPoints()
     {
-        //TODO
         //input for which die to use (allows for easy integration of homebrew classes)
         //math is max roll + con mod
+        Scanner in = new Scanner(System.in);
         System.out.println("What die do you want to roll? (ex. 20) ");
+        System.out.print("d");
         int sidesOfDice = in.nextInt();
         System.out.println();
 
-        switch (sidesOfDice)
+        //get the con modifier
+        int conMod = getConMod();
+
+        switch (sidesOfDice) 
         {
-            case "d12":
-                d12();
+            case 12:
+                System.out.println("Your hit points are: " + (12 + conMod));
                 break;
-            case "d10":
-                d10();
+            case 10:
+                System.out.println("Your hit points are: " + (10 + conMod));
                 break;
-            case "d8":
-                d8();
+            case 8:
+                System.out.println("Your hit points are: " + (8 + conMod));
                 break;
-            case "d6":
-                d6();
+            case 6:
+                System.out.println("Your hit points are: " + (6 + conMod));
                 break;
             default:
                 System.out.println("Invalid input. Please try again.");
-                getDice();
+                calcHitPoints();
         }
-
+        in.close();
     }
 
-    public static void d12 ()
+    public static int getConMod()
     {
-        final int SIDES = 12;
-        
-        
-
-        System.out.println ("Your HP is " + rollTotal);
+        try (Scanner fileScanner = new Scanner(new java.io.File("charCreation.txt")))
+        {
+            while (fileScanner.hasNextLine()) 
+            {
+                String line = fileScanner.nextLine();
+                if (line.startsWith("CON:")) 
+                {
+                    // Extract the CON value from the line
+                    String[] parts = line.split(":");
+                    String conValueString = parts[1].trim().split(" ")[0]; // Get only the numeric part
+                    int conValue = Integer.parseInt(conValueString);
+                    return (conValue - 10) / 2; // Calculate and return the modifier
+                }
+            }
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("An error occurred while reading the character sheet.");
+            e.printStackTrace();
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println("Invalid CON value format in the character sheet.");
+            e.printStackTrace();
+        }
+        return 0; // Default modifier if CON is not found
     }
 }
