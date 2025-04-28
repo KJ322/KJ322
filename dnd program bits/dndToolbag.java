@@ -82,7 +82,7 @@ public class dndToolbag
         else if (choice == COMBAT)
         {
             //TODO
-            System.out.print("Call combat function");
+            combatMode();
         }
         else
         {
@@ -135,5 +135,10 @@ public class dndToolbag
             System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
         }
+    }
+
+    public static void combatMode()
+    {
+        //TODO
     }
 }
