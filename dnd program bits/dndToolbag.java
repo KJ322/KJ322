@@ -3,12 +3,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class dndToolbag 
-{
-    //just a rough framework for now
-    //will probably figure out how to link files for this one
-    
-
-
+{    
     public static void main(String[] args)
     {
         Scanner k = new Scanner (System.in);
@@ -82,7 +77,7 @@ public class dndToolbag
         else if (choice == COMBAT)
         {
             //TODO
-            combatMode();
+            combatMode(k);
         }
         else
         {
@@ -137,8 +132,46 @@ public class dndToolbag
         }
     }
 
-    public static void combatMode()
+    public static void combatMode(Scanner k)
     {
         //TODO
+        final int ATTACK = 1;
+        final int SPELLS = 2;
+        final int TRACK = 3;
+        final int FLEE = 4;
+
+
+        System.out.print("You are in combat mode.\nYou can:\n");
+        System.out.println("1. Engage");
+        System.out.println("2. Cast spells");
+        System.out.println("3. Track HP and inspiration");
+        System.out.println("4. Flee (exit)");
+        System.out.print("Chose an option: ");
+        int choice = k.nextInt();
+
+        if (choice == ATTACK)
+        {
+            rollToAttack.main(null);
+        }
+        else if (choice == SPELLS)
+        {
+            //TODO
+            System.out.print("Call spell tracker java file");
+        }
+        else if (choice == TRACK)
+        {
+            //TODO
+            System.out.print("Call insp/hp/xp tracker");
+        }
+        else if (choice == FLEE)
+        {
+            System.out.println("You have disengaged from combat.");
+            playMode(k);
+        }
+        else
+        {
+            System.out.println("Invalid input.");
+            combatMode(k);
+        }
     }
 }

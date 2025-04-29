@@ -10,7 +10,6 @@ public class diceRoller
         //calling methods
         intro();
         getDice();
-        //rollAgain();
     }
     
     public static void intro()
@@ -205,6 +204,7 @@ public class diceRoller
         else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n"))
         {
             System.out.println("Thank you for using the dice roller!");
+            dndToolbag.playMode(in);
         }
         else
         {
