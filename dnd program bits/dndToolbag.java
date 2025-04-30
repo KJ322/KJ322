@@ -61,8 +61,8 @@ public class dndToolbag
         }
         else if (choice == INVENTORY)
         {
-            //TODO
-            System.out.print("Call track inventory java file");
+            inventory.main(null); // Call the main method of inventory.java
+            playMode(k);
         }
         else if (choice == CHAR_SHEET)
         {
@@ -76,7 +76,6 @@ public class dndToolbag
         }
         else if (choice == COMBAT)
         {
-            //TODO
             combatMode(k);
         }
         else
@@ -87,48 +86,58 @@ public class dndToolbag
     }
 
 
-    public static void charCreation(Scanner k)
+    public static void charCreation(Scanner k) 
     {
         final int ROLL_STATS = 1;
         final int CALC_HP = 2;
         final int INVENTORY = 3;
         final int NOTES = 4;
-
-
-        System.out.print("You are in character creation mode.\nYou can:\n");
-        System.out.println("1. Roll stats");
-        System.out.println("2. Calculate HP");
-        System.out.println("3. Start your inventory");
-        System.out.println("4. Make notes");
-        System.out.print("Chose an option: ");
-        int choice = k.nextInt();
-
-        try (FileWriter writer = new FileWriter("charCreation.txt", true)) {
-            writer.write("User chose: " + choice + "\n");
+        final int FINISHED = 5;
     
-            switch (choice) {
-                case ROLL_STATS:
-                    rollStats.main(null); // Call the main method of rollStats.java
-                    charCreation(k);
-                case CALC_HP:
-                    hitPoints.main(null); // Call the main method of hitPoints.java
-                    charCreation(k);
-                case INVENTORY:
-                    System.out.println("Call inventory java file");
-                    //inventory.main(null); // Call the main method of inventory.java
-                    break;
-                case NOTES:
-                    System.out.println("Call notes java file");
-                    //notes.main(null); // Call the main method of notes.java
-                    break;
-                default:
-                    System.out.println("Invalid input.");
-                    charCreation(k); // Restart the process for invalid input
-                    break;
+        boolean running = true;
+    
+        while (running) 
+        {
+            System.out.print("You are in character creation mode.\nYou can:\n");
+            System.out.println("1. Roll stats");
+            System.out.println("2. Calculate HP");
+            System.out.println("3. Start your inventory");
+            System.out.println("4. Make notes");
+            System.out.println("5. Finished");
+            System.out.print("Choose an option: ");
+            
+            if (k.hasNext()) 
+            {
+                int choice = k.nextInt();
+                k.nextLine(); // Consume newline
+    
+                switch (choice) 
+                {
+                    case ROLL_STATS:
+                        rollStats.main(null); // Call the main method of rollStats.java
+                        break;
+                    case CALC_HP:
+                        hitPoints.main(null); // Call the main method of hitPoints.java
+                        break;
+                    case INVENTORY:
+                        inventory.main(null); // Call the main method of inventory.java
+                        break;
+                    case NOTES:
+                        charNotes.main(null); // Call the main method of charNotes.java
+                        break;
+                    case FINISHED:
+                        System.out.println("Character creation finished.");
+                        running = false; // Exit the loop
+                        break;
+                    default:
+                        System.out.println("Invalid input. Please try again.");
+                }
+            } 
+            else 
+            {
+                System.out.println("Invalid input. Please enter a number.");
+                k.nextLine(); // Consume invalid input
             }
-        } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file.");
-            e.printStackTrace();
         }
     }
 

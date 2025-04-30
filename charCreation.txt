@@ -1,0 +1,6 @@
+STR: 7 (Modifier: -1)
+DEX: 15 (Modifier: 2)
+CON: 8 (Modifier: -1)
+INT: 9 (Modifier: 0)
+WIS: 15 (Modifier: 2)
+CHA: 15 (Modifier: 2)
