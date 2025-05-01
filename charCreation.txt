@@ -1,6 +1,11 @@
-STR: 7 (Modifier: -1)
-DEX: 15 (Modifier: 2)
-CON: 8 (Modifier: -1)
-INT: 9 (Modifier: 0)
-WIS: 15 (Modifier: 2)
-CHA: 15 (Modifier: 2)
+STR: 13 (Modifier: 1)
+DEX: 14 (Modifier: 2)
+CON: 9 (Modifier: 0)
+INT: 10 (Modifier: 0)
+WIS: 14 (Modifier: 2)
+CHA: 14 (Modifier: 2)
+Hit Points: 12
+
+Inventory:
+- short sword
+- light crossbow

@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileWriter;
 
-public class dndToolbag 
-{    
+public class testing 
+{
     public static void main(String[] args)
     {
         Scanner k = new Scanner (System.in);
@@ -12,84 +12,76 @@ public class dndToolbag
 
 
         System.out.println("Welcome to the D&D Toolbag!\n\nDo you want to play or create a character?");
-        System.out.println("1. Play\n2. Character Creation\n3. Exit");
+        System.out.println("1. Play\n2. Character Creation");
         System.out.print("Choose: ");
-        //int userMode = k.nextInt();
+        int userMode = k.nextInt();
 
-        if (k.hasNextInt())
+
+        if (userMode == PLAY)
         {
-            int userMode = k.nextInt();
-            if (userMode == PLAY)
-            {
-                playMode(k);
-            }
-            else if (userMode == CREATE)
-            {
-                charCreation(k);
-            }
-            else
-            {
-                System.out.println("Invalid input.");
-                System.out.println("1. Play\n2. Character Creation\n3. Exit");
-                userMode = k.nextInt();
-            }
+            //TODO
+            playMode(k);
+        }
+        else if (userMode == CREATE)
+        {
+            //TODO
+            charCreation(k);
         }
         else
         {
-            System.out.println("Invalid input. Please enter 1 or 2.");
-        } 
+            System.out.println("Invalid input.");
+            System.out.println("1. Play\n2. Character Creation");
+            userMode = k.nextInt();
+        }
     }
 
-    public static void playMode(Scanner k) 
+
+    public static void playMode(Scanner k)
     {
         final int ROLL = 1;
         final int INVENTORY = 2;
         final int CHAR_SHEET = 3;
         final int TRACKER = 4;
         final int COMBAT = 5;
-    
-        boolean running = true;
-    
-        while (running) {
-            System.out.print("You are in play mode.\nYou can:\n");
-            System.out.println("1. Roll");
-            System.out.println("2. Keep track of inventory");
-            System.out.println("3. Check your character sheet");
-            System.out.println("4. Track inspiration, hp, and xp");
-            System.out.println("5. Enter combat");
-            System.out.print("Choose an option: ");
-    
-            if (k.hasNextInt()) 
-            {
-                int choice = k.nextInt();
-                k.nextLine(); // Consume newline
-    
-                switch (choice) 
-                {
-                    case ROLL:
-                        diceRoller.main(null);
-                        break;
-                    case INVENTORY:
-                        inventory.main(null);
-                        break;
-                    case CHAR_SHEET:
-                        System.out.print("Call character sheet java file");
-                        break;
-                    case TRACKER:
-                        System.out.print("Call insp/hp/xp tracker");
-                        break;
-                    case COMBAT:
-                        combatMode(k);
-                        break;
-                    default:
-                        System.out.println("Invalid input. Please try again.");
-                }
-            } 
-            else 
-            {
-                System.out.println("Invalid input. Please enter a number.");
-                k.nextLine(); // Consume invalid input
-            }
+
+
+        System.out.print("You are in play mode.\nYou can:\n");
+        System.out.println("1. Roll");
+        System.out.println("2. Keep track of inventory");
+        System.out.println("3. Check your character sheet");
+        System.out.println("4. Track inspiration, hp, and xp");
+        System.out.println("5. Enter combat");
+        System.out.print("Chose an option: ");
+        int choice = k.nextInt();
+
+
+        if (choice == ROLL)
+        {
+            diceRoller.main(null);
+        }
+        else if (choice == INVENTORY)
+        {
+            inventory.main(null); // Call the main method of inventory.java
+            playMode(k);
+        }
+        else if (choice == CHAR_SHEET)
+        {
+            //TODO
+            System.out.print("Call character sheet java file");
+        }
+        else if (choice == TRACKER)
+        {
+            //TODO
+            System.out.print("Call insp/hp/xp tracker");
+        }
+        else if (choice == COMBAT)
+        {
+            combatMode(k);
+        }
+        else
+        {
+            System.out.println("Invalid input.");
+            playMode(k);
         }
     }
 
@@ -113,8 +105,8 @@ public class dndToolbag
             System.out.println("4. Make notes");
             System.out.println("5. Finished");
             System.out.print("Choose an option: ");
-    
-            if (k.hasNextInt()) 
+            
+            if (k.hasNext()) 
             {
                 int choice = k.nextInt();
                 k.nextLine(); // Consume newline
@@ -122,21 +114,20 @@ public class dndToolbag
                 switch (choice) 
                 {
                     case ROLL_STATS:
-                        rollStats.main(null);
+                        rollStats.main(null); // Call the main method of rollStats.java
                         break;
                     case CALC_HP:
-                        hitPoints.main(null);
+                        hitPoints.main(null); // Call the main method of hitPoints.java
                         break;
                     case INVENTORY:
-                        inventory.main(null);
+                        inventory.main(null); // Call the main method of inventory.java
                         break;
                     case NOTES:
-                        charNotes.main(null);
+                        charNotes.main(null); // Call the main method of charNotes.java
                         break;
                     case FINISHED:
                         System.out.println("Character creation finished.");
-                        running = false;
-                        playMode(k);
+                        running = false; // Exit the loop
                         break;
                     default:
                         System.out.println("Invalid input. Please try again.");
@@ -144,7 +135,7 @@ public class dndToolbag
             } 
             else 
             {
-                System.out.println("Invalid input. Please enter a number 1-5.");
+                System.out.println("Invalid input. Please enter a number.");
                 k.nextLine(); // Consume invalid input
             }
         }

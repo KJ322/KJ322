@@ -1,5 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,8 +41,6 @@ public class inventory
                     System.out.println("Invalid choice. Please try again.");
             }
         }
-
-        scanner.close();
     }
 
     private static void addItem(Scanner scanner) 
@@ -88,16 +85,58 @@ public class inventory
 
     private static void updateFile() 
     {
-        try (FileWriter writer = new FileWriter("charCreation.txt")) 
+        try 
         {
-            for (String item : inventory) 
+            // Read the existing file content
+            File file = new File("charCreation.txt");
+            StringBuilder fileContent = new StringBuilder();
+            boolean inventorySectionFound = false;
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
             {
-                writer.write(item + "\n");
+                String line;
+                while ((line = reader.readLine()) != null) 
+                {
+                    if (line.equals("Inventory:")) 
+                    {
+                        inventorySectionFound = true;
+                        fileContent.append("Inventory:\n");
+                        for (String item : inventory) 
+                        {
+                            fileContent.append("- ").append(item).append("\n");
+                        }
+                        // Skip old inventory lines
+                        while ((line = reader.readLine()) != null && line.startsWith("- ")) 
+                        {
+                            // Do nothing, just skip
+                        }
+                    }
+                    if (line != null) 
+                    {
+                        fileContent.append(line).append("\n");
+                    }
+                }
+            }
+
+            // If no inventory section was found, add it at the end
+            if (!inventorySectionFound) 
+            {
+                fileContent.append("\nInventory:\n");
+                for (String item : inventory) 
+                {
+                    fileContent.append("- ").append(item).append("\n");
+                }
+            }
+
+            // Write the updated content back to the file
+            try (FileWriter writer = new FileWriter(file)) 
+            {
+                writer.write(fileContent.toString());
             }
         } 
         catch (IOException e) 
         {
-            System.out.println("An error occurred while writing to the file.");
+            System.out.println("An error occurred while updating the file.");
             e.printStackTrace();
         }
     }

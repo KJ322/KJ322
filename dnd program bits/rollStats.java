@@ -73,6 +73,7 @@ public class rollStats
             }
         }
 
+        
         return rolledStats;
     }
 
@@ -136,8 +137,6 @@ public class rollStats
             System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
         }
-
-        scanner.close();
     }
 
     public static int calculateModifier(int abilityScore) 

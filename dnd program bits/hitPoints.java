@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -38,7 +39,6 @@ public class hitPoints
             System.out.print("That is not a valid input! Try again!");
 
         }
-        in.close();
     }
 
     public static void classList()
@@ -71,26 +71,33 @@ public class hitPoints
 
         //get the con modifier
         int conMod = getConMod();
+        int hitPoints = 0;
 
         switch (sidesOfDice) 
         {
             case 12:
-                System.out.println("Your hit points are: " + (12 + conMod));
+                hitPoints = 12 + conMod;
+                System.out.println("Your hit points are: " + hitPoints);
                 break;
             case 10:
-                System.out.println("Your hit points are: " + (10 + conMod));
+                hitPoints = 10 + conMod;
+                System.out.println("Your hit points are: " + hitPoints);
                 break;
             case 8:
-                System.out.println("Your hit points are: " + (8 + conMod));
+                hitPoints = 8 + conMod;
+                System.out.println("Your hit points are: " + hitPoints);
                 break;
             case 6:
-                System.out.println("Your hit points are: " + (6 + conMod));
+                hitPoints = 6 + conMod;
+                System.out.println("Your hit points are: " + hitPoints);
                 break;
             default:
                 System.out.println("Invalid input. Please try again.");
                 calcHitPoints();
+                return; // Exit this method to avoid writing invalid data
         }
-        in.close();
+
+        addHitPoints(hitPoints);
     }
 
     public static int getConMod()
@@ -121,5 +128,19 @@ public class hitPoints
             e.printStackTrace();
         }
         return 0; // Default modifier if CON is not found
+    }
+
+    public static void addHitPoints(int hitPoints)
+    {
+        try (FileWriter writer = new FileWriter("charCreation.txt", true)) // Append mode
+        {
+            writer.write("Hit Points: " + hitPoints + "\n");
+            System.out.println("Hit points successfully written to charCreation.txt!");
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("An error occurred while writing to the character sheet.");
+            e.printStackTrace();
+        }
     }
 }
