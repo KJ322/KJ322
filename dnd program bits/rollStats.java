@@ -125,7 +125,7 @@ public class rollStats
         }
 
         // Write the final assigned stats and modifiers to the file
-        try (FileWriter writer = new FileWriter("charCreation.txt")) 
+        try (FileWriter writer = new FileWriter("charSheet.txt")) 
         {
             for (int i = 0; i < statNames.length; i++) 
             {

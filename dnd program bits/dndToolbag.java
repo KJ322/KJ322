@@ -11,7 +11,7 @@ public class dndToolbag
         final int CREATE = 2;
 
 
-        System.out.println("Welcome to the D&D Toolbag!\n\nDo you want to play or create a character?");
+        System.out.println("Welcome to the Tool Bag of Holding!\n\nDo you want to play or create a character?");
         System.out.println("1. Play\n2. Character Creation\n3. Exit");
         System.out.print("Choose: ");
         //int userMode = k.nextInt();
@@ -104,6 +104,8 @@ public class dndToolbag
     
         boolean running = true;
     
+        charInfo.main(null);
+
         while (running) 
         {
             System.out.print("You are in character creation mode.\nYou can:\n");

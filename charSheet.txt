@@ -1,0 +1,7 @@
+STR: 9 (Modifier: 0)
+DEX: 9 (Modifier: 0)
+CON: 14 (Modifier: 2)
+INT: 11 (Modifier: 0)
+WIS: 14 (Modifier: 2)
+CHA: 14 (Modifier: 2)
+Hit Points: 10

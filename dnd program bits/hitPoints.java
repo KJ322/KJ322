@@ -44,6 +44,7 @@ public class hitPoints
     public static void classList()
     {
         //help menu with hit dice for each base game class
+        System.out.println("Artificer Hit Die: d8");
         System.out.println("Barbarian Hit Die: d12");
         System.out.println("Bard Hit Die: d8");
         System.out.println("Cleric Hit Die: d8");
@@ -56,7 +57,7 @@ public class hitPoints
         System.out.println("Sorcerer Hit Die: d6");
         System.out.println("Warlock Hit Die: d8");
         System.out.println("Wizard Hit Die: d6");
-        System.out.println("Artificer Hit Die: d8");
+
     }
 
     public static void calcHitPoints()
@@ -102,7 +103,7 @@ public class hitPoints
 
     public static int getConMod()
     {
-        try (Scanner fileScanner = new Scanner(new java.io.File("charCreation.txt")))
+        try (Scanner fileScanner = new Scanner(new java.io.File("charSheet.txt")))
         {
             while (fileScanner.hasNextLine()) 
             {
@@ -132,10 +133,10 @@ public class hitPoints
 
     public static void addHitPoints(int hitPoints)
     {
-        try (FileWriter writer = new FileWriter("charCreation.txt", true)) // Append mode
+        try (FileWriter writer = new FileWriter("charSheet.txt", true)) // Append mode
         {
             writer.write("Hit Points: " + hitPoints + "\n");
-            System.out.println("Hit points successfully written to charCreation.txt!");
+            System.out.println("Hit points successfully written to charSheet.txt!");
         } 
         catch (IOException e) 
         {
