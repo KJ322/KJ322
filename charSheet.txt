@@ -9,3 +9,7 @@ Hit Points: 9
 Inventory:
 - Van Richten's cane sword
 - Quarterstaff
+
+Character Notes:
+- Darkvision 60ft
+- Common, Draconic, Dwarvish
