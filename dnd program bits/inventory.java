@@ -88,7 +88,7 @@ public class inventory
         try 
         {
             // Read the existing file content
-            File file = new File("charCreation.txt");
+            File file = new File("charSheet.txt");
             StringBuilder fileContent = new StringBuilder();
             boolean inventorySectionFound = false;
 
