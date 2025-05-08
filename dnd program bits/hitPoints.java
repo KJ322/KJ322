@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class hitPoints 
@@ -8,7 +9,6 @@ public class hitPoints
     public static void main(String[] args) 
     {
         intro();
-
     }
 
     public static void intro()
@@ -133,15 +133,19 @@ public class hitPoints
 
     public static void addHitPoints(int hitPoints)
     {
-        try (FileWriter writer = new FileWriter("charSheet.txt", true)) // Append mode
+        try 
         {
-            writer.write("Hit Points: " + hitPoints + "\n");
+            Map<String, String> sections = CharSheetManager.readCharSheet();
+            sections.put("Hit Points", "Hit Points: " + hitPoints);
+            CharSheetManager.writeCharSheet(sections);
             System.out.println("Hit points successfully written to charSheet.txt!");
         } 
         catch (IOException e) 
         {
-            System.out.println("An error occurred while writing to the character sheet.");
+            System.out.println("An error occurred while updating hit points.");
             e.printStackTrace();
         }
     }
+
+    
 }

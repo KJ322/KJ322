@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class charNotes {
     private static ArrayList<String> notes = new ArrayList<>();
@@ -67,56 +66,18 @@ public class charNotes {
     {
         try 
         {
-            // Read the existing file content
-            File file = new File("charSheet.txt");
-            StringBuilder fileContent = new StringBuilder();
-            boolean notesSectionFound = false;
-
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
+            Map<String, String> sections = CharSheetManager.readCharSheet();
+            StringBuilder notesSection = new StringBuilder("Notes:\n");
+            for (String note : notes) 
             {
-                String line;
-                while ((line = reader.readLine()) != null) 
-                {
-                    if (line.equals("Character Notes:")) 
-                    {
-                        notesSectionFound = true;
-                        fileContent.append("Character Notes:\n");
-                        for (String note : notes) 
-                        {
-                            fileContent.append("- ").append(note).append("\n");
-                        }
-                        // Skip old notes lines
-                        while ((line = reader.readLine()) != null && line.startsWith("- ")) 
-                        {
-                            // Do nothing, just skip
-                        }
-                    }
-                    if (line != null) 
-                    {
-                        fileContent.append(line).append("\n");
-                    }
-                }
+                notesSection.append("- ").append(note).append("\n");
             }
-
-            // If no notes section was found, add it at the end
-            if (!notesSectionFound) 
-            {
-                fileContent.append("\nCharacter Notes:\n");
-                for (String note : notes) 
-                {
-                    fileContent.append("- ").append(note).append("\n");
-                }
-            }
-
-            // Write the updated content back to the file
-            try (FileWriter writer = new FileWriter(file)) 
-            {
-                writer.write(fileContent.toString());
-            }
+            sections.put("Notes", notesSection.toString().trim());
+            CharSheetManager.writeCharSheet(sections);
         } 
         catch (IOException e) 
         {
-            System.out.println("An error occurred while updating the file.");
+            System.out.println("An error occurred while updating the notes.");
             e.printStackTrace();
         }
     }

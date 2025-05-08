@@ -1,5 +1,5 @@
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class charInfo 
@@ -23,13 +23,16 @@ public class charInfo
         System.out.println("Class: " + charClass);
     }
 
-    public static void writeToFile(String charName, String charClass)
+    public static void writeToFile(String charName, String charClass) 
     {
-        try (FileWriter writer = new FileWriter("charSheet.txt")) {
-            writer.write("Character name: " + charName + "\n");
-            writer.write("Class: " + charClass + "\n");
-            System.out.println("Character sheet saved to charSheet.txt.");
-        } catch (IOException e) {
+        try 
+        {
+            Map<String, String> sections = CharSheetManager.readCharSheet();
+            sections.put("Character Info", "Character name: " + charName + "\nClass: " + charClass);
+            CharSheetManager.writeCharSheet(sections);
+        } 
+        catch (IOException e) 
+        {
             System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
         }

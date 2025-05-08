@@ -1,15 +1,25 @@
-STR: 11 (Modifier: 0)
-DEX: 16 (Modifier: 3)
-CON: 13 (Modifier: 1)
-INT: 9 (Modifier: 0)
-WIS: 12 (Modifier: 1)
-CHA: 13 (Modifier: 1)
-Hit Points: 9
+Character Info
+Character name: Alsius
+Class: artificer
 
+Hit Points
+Hit Points: Hit Points:
+
+Assigned Stats
+Assigned Stats:
+STR: 10 (Modifier: 0)
+DEX: 13 (Modifier: 1)
+CON: 14 (Modifier: 2)
+INT: 14 (Modifier: 2)
+WIS: 13 (Modifier: 1)
+CHA: 11 (Modifier: 0)
+
+Inventory
 Inventory:
-- Van Richten's cane sword
-- Quarterstaff
+Inventory:
 
-Character Notes:
-- Darkvision 60ft
-- Common, Draconic, Dwarvish
+Notes
+Notes:
+Notes:
+
+Hit Points: 10

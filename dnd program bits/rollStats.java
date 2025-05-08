@@ -1,5 +1,8 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class rollStats 
@@ -77,70 +80,59 @@ public class rollStats
         return rolledStats;
     }
 
-    public static void assignStatsAndCalculateModifiers(int[] rolledStats) 
-    {
+    public static void assignStatsAndCalculateModifiers(int[] rolledStats) {
         Scanner scanner = new Scanner(System.in);
         String[] statNames = { "STR", "DEX", "CON", "INT", "WIS", "CHA" };
         int[] assignedStats = new int[6];
-        boolean[] used = new boolean[6]; // To track which rolled stats have been assigned
+        boolean[] used = new boolean[6];
 
         System.out.println("You rolled the following stats: ");
-        for (int i = 0; i < rolledStats.length; i++) 
-        {
-            System.out.print(rolledStats[i] + " ");
+        for (int stat : rolledStats) {
+            System.out.print(stat + " ");
         }
         System.out.println("\nNow, assign these stats to your character's attributes.");
 
-        for (int i = 0; i < statNames.length; i++) 
-        {
+        for (int i = 0; i < statNames.length; i++) {
             boolean validInput = false;
             while (!validInput) {
                 System.out.print("Assign a value to " + statNames[i] + ": ");
                 int value = scanner.nextInt();
 
-                // Check if the value is in the rolled stats and hasn't been used yet
-                for (int j = 0; j < rolledStats.length; j++) 
-                {
-                    if (rolledStats[j] == value && !used[j]) 
-                    {
+                for (int j = 0; j < rolledStats.length; j++) {
+                    if (rolledStats[j] == value && !used[j]) {
                         assignedStats[i] = value;
-                        used[j] = true; // Mark this value as used
+                        used[j] = true;
                         validInput = true;
                         break;
                     }
                 }
 
-                if (!validInput) 
-                {
+                if (!validInput) {
                     System.out.println("Invalid input. Please assign an unused rolled value.");
                 }
             }
         }
 
         System.out.println("You have assigned the stats as follows:");
-        for (int i = 0; i < statNames.length; i++) 
-        {
+        StringBuilder statsSection = new StringBuilder("Assigned Stats:\n");
+        for (int i = 0; i < statNames.length; i++) {
             int modifier = calculateModifier(assignedStats[i]);
             System.out.println(statNames[i] + ": " + assignedStats[i] + " (Modifier: " + modifier + ")");
+            statsSection.append(statNames[i]).append(": ").append(assignedStats[i])
+                        .append(" (Modifier: ").append(modifier).append(")\n");
         }
 
-        // Write the final assigned stats and modifiers to the file
-        try (FileWriter writer = new FileWriter("charSheet.txt")) 
-        {
-            for (int i = 0; i < statNames.length; i++) 
-            {
-                int modifier = calculateModifier(assignedStats[i]);
-                writer.write(statNames[i] + ": " + assignedStats[i] + " (Modifier: " + modifier + ")\n");
-            }
-        } catch (IOException e) 
-        {
+        try {
+            Map<String, String> sections = CharSheetManager.readCharSheet();
+            sections.put("Assigned Stats", statsSection.toString().trim());
+            CharSheetManager.writeCharSheet(sections);
+        } catch (IOException e) {
             System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
         }
     }
 
-    public static int calculateModifier(int abilityScore) 
-    {
+    public static int calculateModifier(int abilityScore) {
         return (abilityScore - 10) / 2;
     }
 }

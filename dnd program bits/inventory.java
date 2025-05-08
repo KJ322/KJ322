@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class inventory 
 {
@@ -87,56 +86,18 @@ public class inventory
     {
         try 
         {
-            // Read the existing file content
-            File file = new File("charSheet.txt");
-            StringBuilder fileContent = new StringBuilder();
-            boolean inventorySectionFound = false;
-
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
+            Map<String, String> sections = CharSheetManager.readCharSheet();
+            StringBuilder inventorySection = new StringBuilder("Inventory:\n");
+            for (String item : inventory) 
             {
-                String line;
-                while ((line = reader.readLine()) != null) 
-                {
-                    if (line.equals("Inventory:")) 
-                    {
-                        inventorySectionFound = true;
-                        fileContent.append("Inventory:\n");
-                        for (String item : inventory) 
-                        {
-                            fileContent.append("- ").append(item).append("\n");
-                        }
-                        // Skip old inventory lines
-                        while ((line = reader.readLine()) != null && line.startsWith("- ")) 
-                        {
-                            // Do nothing, just skip
-                        }
-                    }
-                    if (line != null) 
-                    {
-                        fileContent.append(line).append("\n");
-                    }
-                }
+                inventorySection.append("- ").append(item).append("\n");
             }
-
-            // If no inventory section was found, add it at the end
-            if (!inventorySectionFound) 
-            {
-                fileContent.append("\nInventory:\n");
-                for (String item : inventory) 
-                {
-                    fileContent.append("- ").append(item).append("\n");
-                }
-            }
-
-            // Write the updated content back to the file
-            try (FileWriter writer = new FileWriter(file)) 
-            {
-                writer.write(fileContent.toString());
-            }
+            sections.put("Inventory", inventorySection.toString().trim());
+            CharSheetManager.writeCharSheet(sections);
         } 
         catch (IOException e) 
         {
-            System.out.println("An error occurred while updating the file.");
+            System.out.println("An error occurred while updating the inventory.");
             e.printStackTrace();
         }
     }
