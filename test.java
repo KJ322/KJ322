@@ -1,3 +1,5 @@
+public static void main (String[args])
+
 public static boolean bears(int initial, int goal, int increment, int n) {
    if (initial == goal)
       return true;
