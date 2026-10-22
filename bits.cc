@@ -11,7 +11,7 @@ int highLow(int first, int second)
     return upper | lower;
 }
 
-int countPairs(int num)
+int countPairs(unsigned int num)
 {
     int count = 0;
     int pairs = 0;
@@ -38,7 +38,7 @@ int countPairs(int num)
     return pairs;
 }
 
-void printDashOct(int num)
+void printDashOct(unsigned int num)
 {
     unsigned int digit = (num >> 30) & 0x3;
     printf("%u", digit);
